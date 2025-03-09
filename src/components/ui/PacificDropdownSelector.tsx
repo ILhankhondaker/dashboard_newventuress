@@ -12,23 +12,29 @@ const PacificDropdownSelector = ({
   list,
   selectedValue,
   onValueChange,
+  placeholderText,
 }: {
   list: PacificDropdownType[]; // List of items
   selectedValue: string; // Currently selected value
   onValueChange: (value: string) => void; // Function to handle value change
+  placeholderText?: string;
 }) => {
   return (
     <Select
-      value={selectedValue}
+      value={typeof selectedValue === "string" ? selectedValue : ""}
       onValueChange={(val) => onValueChange(val)} // Update the state on selection
     >
-      <SelectTrigger className="bg-[#ECECEC] rounded-[8px] text-[#0057A8]">
-        <SelectValue placeholder={selectedValue} />
+      <SelectTrigger className="bg-primary  rounded-[8px] text-[#fff]">
+        <SelectValue placeholder={placeholderText ?? selectedValue} />
       </SelectTrigger>
-      <SelectContent className="w-fit">
-        <SelectGroup>
+      <SelectContent className="w-fit *:p-0">
+        <SelectGroup className="">
           {list.map((item) => (
-            <SelectItem key={item.id} value={item.value}>
+            <SelectItem
+              key={item.id}
+              value={typeof item.value === "string" ? item.value : ""}
+              className="text-[#444444] font-normal text-[16px] hover:!bg-[#E6EEF6]"
+            >
               {item.name}
             </SelectItem>
           ))}

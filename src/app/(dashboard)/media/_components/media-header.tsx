@@ -4,16 +4,9 @@ import Link from "next/link";
 
 const MediaHeader = () => {
   return (
-    <div className="h-[80px] w-full bg-white p-[8px] rounded-[12px] flex items-center justify-between">
-      <div className="px-[10px] text-[12px] leading-[14.4px]">
-        <span className="font-medium">All</span> (20) |
-        <span className="text-[#2A6C2D]"> Published (30) | </span>
-        <span className="text-[#2A6C2D]"> Draft (30) | </span>
-        <span className="text-[#2A6C2D]"> Pending (30) | </span>
-        <span className="text-[#2A6C2D]"> Archived (30) </span>
-      </div>
+    <div className="h-[80px] w-full bg-white p-[8px] rounded-[12px] flex items-center justify-end">
       <div>
-        <Button asChild>
+        <Button asChild className="w-[135px] h-[43px] px-[24px] py-[12px] text-[16px] font-medium leading-[19.2px]">
           <Link href="/">
             Add New <Box />
           </Link>

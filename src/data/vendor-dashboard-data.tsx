@@ -5,8 +5,9 @@ import {
   LayoutDashboard,
   MessageSquare,
   Settings,
+  ShieldQuestion,
   ShoppingCart,
-  UserPlus,
+  UserPlus
 } from "lucide-react";
 import Image from "next/image";
 
@@ -24,22 +25,48 @@ export const sidebarContents = [
     id: 1,
     name: "Dashboard",
     icon: <LayoutDashboard className="h-[16px] w-[16px]" />,
-    href: "/",
+    href: "/"
   },
   {
     id: 2,
     name: "Media",
     icon: <BookImage className="h-[16px] w-[16px]" />,
-    href: "/media",
+    href: "/media"
   },
   {
     id: 3,
-    name: "Auction/listing",
-    icon: <Box className="h-[16px] w-[16px]" />,
-    href: "/vendor-dashboard/auctions",
+    name: "Category",
+    icon: (
+      <Image
+        src="/assets/img/category.png"
+        alt="category"
+        width={16}
+        height={16}
+      />
+    ),
+    href: "/category"
   },
   {
     id: 4,
+    name: "Vendor Management",
+    icon: (
+      <Image
+        src="/assets/img/vendor-management.png"
+        alt="vendor management"
+        width={16}
+        height={16}
+      />
+    ),
+    href: "/vendor-management"
+  },
+  {
+    id: 5,
+    name: "Auction/listing",
+    icon: <Box className="h-[16px] w-[16px]" />,
+    href: "/auction-listing"
+  },
+  {
+    id: 6,
     name: "Auctions",
     // icon: Icons.hammer,
     icon: (
@@ -50,30 +77,17 @@ export const sidebarContents = [
         height={16}
       />
     ),
-    href: "/live-auctions",
+    href: "/auctions"
   },
   {
-    id: 5,
+    id: 7,
     name: "Order",
     icon: <ShoppingCart className="h-[16px] w-[16px]" />,
-    href: "/orders",
+    href: "/orders"
   },
   {
-    id: 6,
-    name: "Cupons",
-    icon: <Gift className="h-[16px] w-[16px]" />,
-    href: "/cupons",
-  },
-  {
-    id: 7,
-    name: "Store Settings",
-    icon: <Settings className="h-[16px] w-[16px]" />,
-    href: "/settings",
-  },
-  {
-    id: 7,
+    id: 8,
     name: "Customer",
-    // icon: Icons.userI,
     icon: (
       <Image
         src="/assets/img/customer_icon.png"
@@ -82,24 +96,82 @@ export const sidebarContents = [
         height={16}
       />
     ),
-    href: "/customers",
+    href: "/customers"
   },
   {
-    id: 8,
-    name: "Refund",
-    // icon: Icons.refund,
+    id: 9,
+    name: "Store management",
     icon: (
       <Image
-        src="/assets/img/refund_icon.png"
-        alt="refund"
+        src="/assets/img/store-management.png"
+        alt="store-management"
         width={16}
         height={16}
       />
     ),
-    href: "/refund",
+    href: "/store-management"
   },
   {
-    id: 8,
+    id: 10,
+    name: "Financial Management",
+    icon: (
+      <Image
+        src="/assets/img/financial-management.png"
+        alt="financial-management"
+        width={16}
+        height={16}
+      />
+    ),
+    href: "/financial-management"
+  },
+  {
+    id: 11,
+    name: "Marketing & Promotions",
+    icon: (
+      <Image
+        src="/assets/img/marking-promotion.png"
+        alt="markeing and promotion"
+        width={16}
+        height={16}
+      />
+    ),
+    href: "/marketing-promotions"
+  },
+
+  {
+    id: 12,
+    name: "Cupons",
+    icon: <Gift className="h-[16px] w-[16px]" />,
+    href: "/cupons"
+  },
+  {
+    id: 13,
+    name: "Blogs Management",
+    icon: (
+      <Image
+        src="/assets/img/blog-management.png"
+        alt="markeing and promotion"
+        width={16}
+        height={16}
+      />
+    ),
+    href: "/blogs-management"
+  },
+  {
+    id: 14,
+    name: "Content Management",
+    icon: (
+      <Image
+        src="/assets/img/content-management.png"
+        alt="content management"
+        width={16}
+        height={16}
+      />
+    ),
+    href: "/content-management"
+  },
+  {
+    id: 15,
     name: "Reports",
     // icon: Icons.reports,
     icon: (
@@ -110,20 +182,32 @@ export const sidebarContents = [
         height={16}
       />
     ),
-    href: "/reports",
+    href: "/reports"
   },
   {
-    id: 9,
+    id: 16,
     name: "Reviews",
     icon: <MessageSquare className="h-[16px] w-[16px]" />,
-    href: "/reviews",
+    href: "/reviews"
   },
   {
-    id: 9,
+    id: 17,
+    name: "Settings",
+    icon: <Settings className="h-[16px] w-[16px]" />,
+    href: "/settings"
+  },
+  {
+    id: 18,
     name: "Membership",
     icon: <UserPlus className="h-[16px] w-[16px]" />,
-    href: "/membership",
+    href: "/membership"
   },
+  {
+    id: 19,
+    name: "Help & Support",
+    icon: <ShieldQuestion className="h-[16px] w-[16px]" />,
+    href: "/help-support"
+  }
 ] as SidebarContentType[];
 
 export const getCurrentTab = (
@@ -132,5 +216,5 @@ export const getCurrentTab = (
   return sidebarContents
     .slice() // Create a copy of the array to avoid mutating the original
     .sort((a, b) => b.href.length - a.href.length) // Sort by href length (longer paths first)
-    .find((tab) => fullPath.startsWith(tab.href));
+    .find(tab => fullPath.startsWith(tab.href));
 };
