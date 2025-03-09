@@ -14,25 +14,43 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { cn } from "@/lib/utils";
 
 interface DataTableProps<TData, TValue> {
   columns: ColumnDef<TData, TValue>[]; // Columns for the table
   table: ReactTable<TData>; // Correctly typed table instance
+  title?: string;
+  titleClass?: string;
 }
 
 export function DataTable<TData, TValue>({
   columns,
   table,
+  title = "Data Table",
+  titleClass,
 }: DataTableProps<TData, TValue>) {
   return (
-    <div className="rounded-md border">
+    <div className="rounded-3xl border pt-[32px] bg-white">
+      <div
+        className={cn(
+          titleClass,
+          "bg-primary px-[32px] font-semibold py-3 mx-[32px] rounded-t-3xl text-white text-[28px]"
+        )}
+      >
+        {title}
+      </div>
       <Table>
         <TableHeader>
           {table.getHeaderGroups().map((headerGroup) => (
-            <TableRow key={headerGroup.id}>
+            <TableRow
+              key={headerGroup.id}
+              style={{
+                boxShadow: "none",
+              }}
+            >
               {headerGroup.headers.map((header) => {
                 return (
-                  <TableHead key={header.id}>
+                  <TableHead key={header.id} className="text-center">
                     {header.isPlaceholder
                       ? null
                       : flexRender(
@@ -46,11 +64,12 @@ export function DataTable<TData, TValue>({
           ))}
         </TableHeader>
         <TableBody>
-          {table.getRowModel().rows?.length ? (
+          {table.getRowModel()?.rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
                 key={row.id}
                 data-state={row.getIsSelected() && "selected"}
+                className="text-center"
               >
                 {row.getVisibleCells().map((cell) => (
                   <TableCell key={cell.id}>
