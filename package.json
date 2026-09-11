@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "node api.js && next dev",
     "build": "next build",
-    "start": "next start",
+    "start": "node api.js && next start",
     "lint": "next lint"
   },
   "dependencies": {
@@ -37,11 +37,11 @@
     "i": "^0.3.7",
     "lucide-react": "^0.474.0",
     "motion": "^12.4.5",
-    "next": "14.2.22",
-    "next-auth": "^5.0.0-beta.25",
+    "next": "16.3.4",
+    "next-auth": "^5.0.0-beta.32",
     "next-nprogress-bar": "^2.4.3",
     "next-themes": "^0.4.4",
-    "npm": "^11.1.0",
+    "npm": "^11.19.1",
     "plaiceholder": "^3.0.0",
     "react": "^18",
     "react-day-picker": "^8.10.1",
@@ -65,7 +65,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",
-    "eslint-config-next": "14.2.22",
+    "eslint-config-next": "16.3.4",
     "postcss": "^8",
     "tailwindcss": "^3.4.1",
     "typescript": "^5"
